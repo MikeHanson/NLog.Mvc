@@ -1,0 +1,3 @@
+NLog.Mvc is a project intended to make integrating ASP.NET MVC with NLog simple, consistent and painless.
+
+It provides an NLog target that uses an Entity Framework DbContext to access log entries in a database.  This means you can enable/disable and configure the usage of NLog.Mvc via Web.Config just like any other NLog target. 
