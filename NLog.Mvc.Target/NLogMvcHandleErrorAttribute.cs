@@ -6,15 +6,15 @@ namespace NLog.Mvc
 	/// <summary>
 	/// Logs errors using NLog.Mvc logger
 	/// </summary>
-	public class NLogHandleErrorAttribute: HandleErrorAttribute
+	public class NLogMvcHandleErrorAttribute: HandleErrorAttribute
 	{
 		private readonly ILogger logger;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NLogHandleErrorAttribute"/> class.
+		/// Initializes a new instance of the <see cref="NLogMvcHandleErrorAttribute"/> class.
 		/// </summary>
 		/// <param name="logger">The logger.</param>
-		public NLogHandleErrorAttribute(ILogger logger)
+		public NLogMvcHandleErrorAttribute(ILogger logger)
 		{
 			this.logger = logger;
 		}
@@ -26,8 +26,8 @@ namespace NLog.Mvc
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="filterContext"/> parameter is null.</exception>
 		public override void OnException(ExceptionContext filterContext)
 		{
+			this.logger.Error(string.Format("Unexpected error captured by {0}", this.GetType().Name), filterContext.Exception);
 			base.OnException(filterContext);
-			logger.Error("Unexpected error captured by filter", filterContext.Exception);
 		}
 	}
 }

@@ -36,16 +36,33 @@ namespace NLog.Mvc
 				.IsVariableLength()
 				.HasMaxLength(200);
 
-			this.Property(e => e.Server)
-				.IsOptional()
-				.HasColumnName("Server")
-				.IsUnicode()
-				.IsVariableLength()
-				.HasMaxLength(200);
-
 			this.Property(e => e.Message)
 				.IsRequired()
 				.HasColumnName("Message")
+				.IsUnicode()
+				.IsVariableLength();
+
+			this.Property(e => e.ExceptionType)
+				.IsOptional()
+				.HasColumnName("ExceptionType")
+				.IsUnicode()
+				.IsVariableLength();
+
+			this.Property(e => e.Operation)
+				.IsOptional()
+				.HasColumnName("Operation")
+				.IsUnicode()
+				.IsVariableLength();
+
+			this.Property(e => e.ExceptionMessage)
+				.IsOptional()
+				.HasColumnName("ExceptionMessage")
+				.IsUnicode()
+				.IsVariableLength();
+
+			this.Property(e => e.StackTrace)
+				.IsOptional()
+				.HasColumnName("StackTrace")
 				.IsUnicode()
 				.IsVariableLength();
 		}

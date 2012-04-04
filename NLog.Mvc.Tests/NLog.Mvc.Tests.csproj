@@ -64,9 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoggerTests.cs" />
-    <Compile Include="Migrations\201203301807505_Initialisation.cs" />
-    <Compile Include="Migrations\201203301807505_Initialisation.Designer.cs">
-      <DependentUpon>201203301807505_Initialisation.cs</DependentUpon>
+    <Compile Include="Migrations\201204041407150_Initialisation.cs" />
+    <Compile Include="Migrations\201204041407150_Initialisation.Designer.cs">
+      <DependentUpon>201204041407150_Initialisation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TargetTests.cs" />

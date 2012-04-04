@@ -32,17 +32,22 @@ namespace NLog.Mvc4.Web
 
 		private static void RegisterSingletons(ContainerBuilder builder)
 		{
-
+			builder.RegisterType<Mvc.Logger>().As<ILogger>().SingleInstance();
 		}
 
 		private static void RegisterTransientTypes(ContainerBuilder builder)
 		{
-			builder.RegisterType<Logger>().As<ILogger>();
+
 		}
 
 		private static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add(new HandleErrorAttribute());
+			var logger = DependencyResolver.Current.GetService<ILogger>();
+			filters.Add(new NLogMvcHandleErrorAttribute(logger)
+							{
+								View = "Error"
+						    });
+
 		}
 
 		private static void RegisterRoutes(RouteCollection routes)
@@ -52,7 +57,7 @@ namespace NLog.Mvc4.Web
 			routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters
-				new {controller = "Home", action = "Index", id = UrlParameter.Optional} // Parameter defaults
+				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 				);
 
 		}

@@ -8,6 +8,18 @@ namespace NLog.Mvc
 	/// </summary>
 	public class LoggingContext : DbContext, ILoggingContext
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LoggingContext"/> class.
+		/// </summary>
+		public LoggingContext()
+			: base("name=LoggingContext")
+		{
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LoggingContext"/> class.
+		/// </summary>
+		/// <param name="connectionStringName">Name of the connection string.</param>
 		public LoggingContext(string connectionStringName)
 			: base(connectionStringName)
 		{

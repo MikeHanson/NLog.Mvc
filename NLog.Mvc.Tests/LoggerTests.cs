@@ -10,6 +10,8 @@ namespace NLog.Mvc.Tests
 		private const string LoggerName = "NLog.Mvc.Logger";
 		private const string ConnectionStringName = "LoggingContext";
 		private const string MessageTemplate = "{0} log entry";
+		private const string ExceptionMessageTemplate = "Exception logged a {0}";
+
 		private Logger logger;
 
 		[SetUp]
@@ -37,11 +39,53 @@ namespace NLog.Mvc.Tests
 		[TestCase("INFO")]
 		[TestCase("ERROR")]
 		[TestCase("WARN")]
-		public void WriteTraceMessageToDatabase(string level)
+		public void WriteMessageToDatabaseForLevel(string level)
 		{
 			var message = this.MessageForLevel(level);
 			this.WriteLogForLevel(level, message);
 			this.AssertEntryWrittenToDatabase(level, message);
+		}
+
+		[TestCase("TRACE")]
+		[TestCase("DEBUG")]
+		[TestCase("INFO")]
+		[TestCase("ERROR")]
+		[TestCase("WARN")]
+		public void WriteExceptionToDatabaseForLevel(string level)
+		{
+			var message = this.ExceptionMessageForLevel(level);
+			this.WriteExceptionForLevel(level, message);
+			this.AssertEntryWrittenToDatabase(level, message);
+		}
+
+		private string ExceptionMessageForLevel(string level)
+		{
+			return String.Format(ExceptionMessageTemplate, level);
+		}
+
+		private void WriteExceptionForLevel(string level, string message)
+		{
+			var exception = new Exception(string.Format("Test exception at {0} level", level));
+			switch(level)
+			{
+				case "TRACE":
+					this.logger.Trace(message, exception);
+					return;
+				case "DEBUG":
+					this.logger.Debug(message, exception);
+					return;
+				case "INFO":
+					this.logger.Information(message, exception);
+					return;
+				case "ERROR":
+					this.logger.Error(message, exception);
+					return;
+				case "WARN":
+					this.logger.Warning(message, exception);
+					return;
+				default:
+					return;
+			}
 		}
 
 		private string MessageForLevel(string level)
