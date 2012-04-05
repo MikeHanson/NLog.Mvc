@@ -1,16 +1,75 @@
-﻿@{
-    Layout = null;
+﻿@model HandleErrorInfo
+@{
+	ViewBag.Title = "Unexpected Error";
 }
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>Unexpected Error</title>
 </head>
 <body>
-    <h2>
-        Sorry, an error occurred while processing your request.
-    </h2>
+	<h2>
+		Unexpected Error</h2>
+	<p>
+		Sorry, but unexpected error has occured. The error
+		has been logged and our support team will look into
+		it as soon as possible
+	</p>
+	<p>
+		You may be able to continue by using your back button
+		or starting the process again. However if the error
+		continues please feel free to contact our suppor team
+	</p>
+	@{
+		if(HttpContext.Current.IsCustomErrorEnabled)
+		{
+		<h3>
+			Error Details
+		</h3>
+		<table>
+			<tr>
+				<th>
+					Controller:
+				</th>
+				<td>
+					@Model.ControllerName
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Action:
+				</th>
+				<td>
+					@Model.ActionName
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Message:
+				</th>
+				<td>
+					@Model.Exception.GetType().Name
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Message:
+				</th>
+				<td>
+					@Model.Exception.Message
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Stack Trace:
+				</th>
+				<td>
+					@Model.Exception.StackTrace
+				</td>
+			</tr>
+		</table>
+		}
+	}
 </body>
 </html>

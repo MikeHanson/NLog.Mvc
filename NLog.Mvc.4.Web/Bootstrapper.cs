@@ -43,11 +43,7 @@ namespace NLog.Mvc4.Web
 		private static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 			var logger = DependencyResolver.Current.GetService<ILogger>();
-			filters.Add(new NLogMvcHandleErrorAttribute(logger)
-							{
-								View = "Error"
-						    });
-
+			filters.Add(new NLogMvcHandleErrorAttribute(logger));
 		}
 
 		private static void RegisterRoutes(RouteCollection routes)
