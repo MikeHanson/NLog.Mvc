@@ -63,7 +63,7 @@ namespace NLog.Mvc
 
 		private void ThrowInvalidLayoutException(string message)
 		{
-			throw new NotImplementedException();
+			throw new InvalidLayoutException();
 		}
 	}
 }
