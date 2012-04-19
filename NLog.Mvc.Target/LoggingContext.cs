@@ -35,6 +35,7 @@ namespace NLog.Mvc
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
+			Database.SetInitializer<LoggingContext>(null);
 			modelBuilder.Configurations.Add(new LogEntryConfiguration());
 		}
 	}
