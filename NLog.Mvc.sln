@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Mvc.4.Web", "NLog.Mvc.4.Web\NLog.Mvc.4.Web.csproj", "{29D977D2-C0F0-4083-9E84-5A01C4A86C3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Mvc", "NLog.Mvc.Target\NLog.Mvc.csproj", "{0B6E88F2-65C6-4E26-B61D-EFB9F60E04DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Mvc", "NLog.Mvc\NLog.Mvc.csproj", "{0B6E88F2-65C6-4E26-B61D-EFB9F60E04DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Mvc.Tests", "NLog.Mvc.Tests\NLog.Mvc.Tests.csproj", "{0AD06056-3A1B-4549-9682-DE95C9CD01A4}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D2136E
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Mvc.Package", "NLog.Mvc.Package\NLog.Mvc.Package.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,8 @@ Global
 		{0AD06056-3A1B-4549-9682-DE95C9CD01A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD06056-3A1B-4549-9682-DE95C9CD01A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD06056-3A1B-4549-9682-DE95C9CD01A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
